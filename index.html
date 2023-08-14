@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CO2 emmission</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+<body>
+    <h1>Find your Emissions!</h1>
+    <div class="info">
+        Welcome to Polaris !
+        <br>
+        We have trained, tested and built a model - Polaris that can analyse your carbon emission based on the specifications of the vehicle you drive on a day-to-day basis having an <u>accuracy of 94.41%</u>. To find your impact on our planet per kilometer, enter the following specifications about your vehicle’s engine and fuel consumption :
+    </div>
+	<form action="/" method="POST">
+		
+        <div class="inputgroup">
+            <input type="number" step="0.01" id="input1" name="input1" value="" onkeyup="this.setAttribute('value', this.value);"/>
+            <label for="input1">Engine Size (L)</label>
+        </div>
+
+        <div class="inputgroup">
+            <input type="number" step="0.01" id="input2" name="input2" value="" onkeyup="this.setAttribute('value', this.value);"/>
+            <label for="input2">No of cylinders</label>
+        </div>
+
+        <div class="inputgroup">
+            <input type="number" step="0.01" id="input3" name="input3" value="" onkeyup="this.setAttribute('value', this.value);"/>
+            <label for="input3">Fuel Consumption (L/100 km)</label>
+        </div>
+
+        <div class="submit">
+            <input type="submit" value="Submit">
+        </div>
+
+	</form>
+    {% if result %}
+	<div class="answer">
+		<p>CO2 emmitted: {{ result }} g/km</p>
+        <form action="/analysis" method="POST">
+            <input type="submit" value="See Analysis">
+        </form>
+	</div>
+	{% endif %}
+    
+</body>
+</html>

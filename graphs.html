@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Graph</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1>Graph Analysis</h1>
+        <div class="graph">
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Plot">
+        </div>
+        <div class="graphInfo">
+            <p>The graph represents the carbon emission of a dataset from Canada(taken from Canada Government official open data website). There are total 7385 records clustered into 3 main categories:
+                <br>
+                1. Purple - Low emission(2903 people)
+                <br>
+                2. Yellow - Average emission(3157 people)
+                <br>
+                3. Blue - High emission(1325 people) 
+                <br>
+                This means that the majority of the population lies in the average emission group. There are more people producing lower than average emissions than high emittors.
+            </p>
+            {% if result %}
+	        <div>
+		        <p>On an average {{result}} trees are required to nullify the average CO2 emission.</p>
+	        </div>
+	        {% endif %}
+        </div>
+        
+    
+    </body>
+</html>
